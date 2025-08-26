@@ -1,12 +1,12 @@
 import sys
-sys.path.append("sdxl/sdxl_modules")
-sys.path.append("sdxl")
+sys.path.append("./sdxl_modules")
+sys.path.append("./")
 import sys, cv2, numpy as np
 from diffusers.utils import load_image
 from insightface.app import FaceAnalysis
 from pipeline_stable_diffusion_xl_instantid import draw_kps
 
-def setup_face_app(root_path="./sdxl", det_size=(640,640)):
+def setup_face_app(root_path="./", det_size=(640,640)):
     app = FaceAnalysis(
         name='antelopev2',
         root=root_path,

@@ -37,7 +37,7 @@ def setup_environment():
     return PIPE , APP, STYLES
 
 
-def generate_images(image_path, prompt_text, style_name, num_images=1, outdir="sdxl/images"):
+def generate_images(image_path, prompt_text, style_name, num_images=1, outdir="images"):
     global PIPE, APP, STYLES
 
     if PIPE is None or APP is None or STYLES is None:
