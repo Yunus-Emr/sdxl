@@ -6,8 +6,8 @@ def login_hf(token: str):
     login(token)
 
 def download_models():
-    os.makedirs("SDXL_Test/models", exist_ok=True)
-    os.makedirs("SDXL_Test/images", exist_ok=True)
+    os.makedirs("sdxl/models", exist_ok=True)
+    os.makedirs("sdxl/images", exist_ok=True)
 
     models = {
         "YamerMIX_v8": "wangqixun/YamerMIX_v8",
@@ -17,23 +17,23 @@ def download_models():
     for name, repo in models.items():
         snapshot_download(
             repo_id=repo,
-            local_dir=f"SDXL_Test/models/{name}",
+            local_dir=f"sdxl/models/{name}",
             local_dir_use_symlinks=False
         )
 
-    if not os.path.exists("SDXL_Test/InstantID"):
+    if not os.path.exists("sdxl/InstantID"):
         subprocess.run([
-            "git", "clone", "https://github.com/InstantID/InstantID.git", "SDXL_Test/InstantID"
+            "git", "clone", "https://github.com/InstantID/InstantID.git", "sdxl/InstantID"
         ])
     subprocess.run([
         "cp",
-        "SDXL_Test/InstantID/pipeline_stable_diffusion_xl_instantid.py",
-        "SDXL_Test/"
+        "sdxl/InstantID/pipeline_stable_diffusion_xl_instantid.py",
+        "sdxl/"
     ])
 
-    if not os.path.exists("SDXL_Test/models/instantid/ip-adapter.bin"):
+    if not os.path.exists("sdxl/models/instantid/ip-adapter.bin"):
         subprocess.run([
             "wget",
-            "-O", "SDXL_Test/models/instantid/ip-adapter.bin",
+            "-O", "sdxl/models/instantid/ip-adapter.bin",
             "https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin"
         ])

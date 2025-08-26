@@ -1,5 +1,5 @@
 import json
-def load_styles(json_path="SDXL_Test/styles.json"):
+def load_styles(json_path="sdxl/styles.json"):
     with open(json_path, "r") as f:
         styles = json.load(f)
     return styles

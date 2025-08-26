@@ -2,8 +2,9 @@ import sys
 import os
 import torch
 from pathlib import Path
-sys.path.append("sdxl/sdxl_modules")
-sys.path.append("sdxl/SDXL_Test")
+sys.path.append("./sdxl_modules")
+sys.path.append("./")
+sys.path.append("./IP-Adapter")
 from sdxl_modules import downloader, pipe_loader, face_analysis, style_manager
 
 PIPE = None
@@ -13,17 +14,17 @@ STYLES = None
 def setup_environment():
     global PIPE, APP, STYLES
 
-    if not Path("SDXL_Test/models/YamerMIX_v8").exists():
+    if not Path("models/YamerMIX_v8").exists():
         downloader.download_models()
 
     if PIPE is None:
         print("[INFO] Pipeline yükleniyor...")
-        controlnet_path = "/content/SDXL_Test/models/instantid/ControlNetModel"
+        controlnet_path = "models/instantid/ControlNetModel"
         PIPE = pipe_loader.load_pipe(
-            base_model="/content/SDXL_Test/models/YamerMIX_v8",
+            base_model="models/YamerMIX_v8",
             controlnet=pipe_loader.load_controlnet(controlnet_path)
         )
-        pipe_loader.load_ip_adapter(PIPE, "/content/SDXL_Test/models/instantid/ip-adapter.bin")
+        pipe_loader.load_ip_adapter(PIPE, "models/instantid/ip-adapter.bin")
     else:
         print("[CACHE] Pipeline zaten yüklü, tekrar yüklenmedi.")
 
@@ -36,7 +37,7 @@ def setup_environment():
     return PIPE , APP, STYLES
 
 
-def generate_images(image_path, prompt_text, style_name, num_images=1, outdir="SDXL_Test/images"):
+def generate_images(image_path, prompt_text, style_name, num_images=1, outdir="sdxl/images"):
     global PIPE, APP, STYLES
 
     if PIPE is None or APP is None or STYLES is None:

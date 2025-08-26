@@ -1,6 +1,6 @@
 import sys
 sys.path.append("sdxl/sdxl_modules")
-sys.path.append("sdxl/SDXL_Test")
+sys.path.append("sdxl")
 import torch
 from diffusers.models import ControlNetModel
 from pipeline_stable_diffusion_xl_instantid import StableDiffusionXLInstantIDPipeline
