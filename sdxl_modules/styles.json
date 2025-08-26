@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Angel Fantasy",
+        "prompt": "ethereal fantasy artwork of an angel, glowing light, cathedral, detailed, majestic, {prompt}",
+        "negative_prompt": "blurry, lowres, distorted anatomy, bad wings"
+    },
+    {
+        "name": "Royal Portrait",
+        "prompt": "royal fantasy portrait, ornate crown, jewelry, ultra detailed face, regal, majestic, {prompt}",
+        "negative_prompt": "lowres, blurry, bad anatomy, plain background"
+    }
+]
